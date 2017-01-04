@@ -1,0 +1,1228 @@
+<!doctype html>
+<html lang="en-au">
+	<head>
+    
+    <!-- Metadata -->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>Music Player</title>
+		<meta name="description" content="Music Player">
+		<meta name="author" content="Oliver Plummer">
+		<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+		
+		<!-- Favicon -->
+		<link rel="icon" type="image/ico" href="media/favicon.png">
+    
+    <!-- Font Imports -->
+		<link rel="stylesheet" href="../import/fonts/material-icons/font.css">
+    
+    <!-- CSS Imports -->
+		<link rel="stylesheet" type="text/css" href="bower_components/normalize-css/normalize.css">
+		<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/base/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="plugins/hamburgers.min.css">
+		<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+		
+		<!-- Javascript Imports -->
+		<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+		<script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.min.js" ></script>
+		<script type="text/javascript" src="bower_components/mustache.js/mustache.min.js"></script>
+		<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="bower_components/react/react.min.js"></script>
+    <script type="text/javascript" src="bower_components/react/react-dom.min.js"></script>
+		<script type="text/javascript" src="bower_components/babel/browser.min.js"></script>
+		<script type="text/javascript" src="plugins/sorttable.js"></script>
+    
+	</head>
+	<body>
+    
+		<!-- Header and Nav -->
+		<header>
+      <div class="container-fluid">
+        <div class="col-sm-6 nav-title">
+          <div class="menu-icon">
+            <button class="hamburger hamburger--squeeze" type="button" id="header-hamburger">
+							<span class="hamburger-box">
+								<span class="hamburger-inner"></span>
+							</span>
+						</button>
+          </div>
+          <div class="menu-text-wrapper">
+            <h1 class="menu-text" id="page-title"></h1>
+          </div>
+        </div>
+        <div class="col-sm-6 nav-controls">
+          <div class="nav-controls-inner flex">
+						<div class="flex-left nav-controls-song-info flex">
+							<div class="nav-controls-album-cover">
+								<img src="media/album-covers/another-one-bites-the-dust.jpg" />
+							</div>
+							<div class="flex-left nav-controls-song-info-text">
+								<p class="nav-controls-info-title">Another One Bites the Dust</p>
+								<p class="nav-controls-info-artist">Queen</p>
+							</div>
+						</div>
+						<div class="nav-controls-buttons">
+							<div class="flex">
+								<div class="nav-controls-button nav-controls-previous">
+									<i class="material-icons">skip_previous</i>
+								</div>
+								<div class="nav-controls-button nav-controls-play">
+									<i class="material-icons test-play">play_arrow</i>
+								</div>
+								<div class="nav-controls-button nav-controls-next">
+									<i class="material-icons">skip_next</i>
+								</div>
+							</div>
+						</div>
+					</div>
+        </div>
+      </div>
+    </header>
+    <nav style="display: none">
+      <div class="drawer">
+				<div class="text-break drawer-top-break"></div>
+        <div class="logo">
+          <a href="index.html">
+            <img src="media/logo.png">
+          </a>
+        </div>
+        <div class="text-break"></div>
+        <div class="menu">
+          <ul>
+            <li id="menu-albums">
+              <i class="material-icons menu-icon">album</i>
+              <span>Albums</span>
+            </li>
+            <li id="menu-artists">
+							<i class="material-icons menu-icon">person</i>
+              <span>Artists</span>
+            </li>
+						<li id="menu-tracks">
+              <i class="material-icons menu-icon">audiotrack</i>
+							<span>Tracks</span>
+						</li>
+            <li id="menu-about">
+              <i class="material-icons menu-icon">info</i>
+              <span>About</span>
+            </li>
+          </ul>
+        </div>
+        <div class="text-break"></div>
+				<div class="nav-greeting" id="greetingApp"></div>
+        <div class="text-break"></div>
+				<div class="weather" id="weatherApp"></div>
+        <div class="text-break"></div>
+      </div>
+    </nav>
+		<overlay-backdrop class="menu-backdrop" style="display: none"></overlay-backdrop>
+		
+    <!-- Albums -->
+    <main class="albums page" id="albumsApp" style="display: block"></main>
+    <dialog class="song-dialog" id="songDialogApp" style="display: none"></dialog>
+		<overlay-backdrop class="songs-dialog-backdrop song-close" style="display: none"></overlay-backdrop>
+		
+    <!-- Artists -->
+		<section class="artists page" id="artistsApp" style="display: none"></section>
+    <dialog class="artist-info-dialog" id="artistsInfoApp" style="display: none"></dialog>
+		<overlay-backdrop class="artists-info-dialog-backdrop artist-close" style="display: none"></overlay-backdrop>
+		
+		<!-- Tracks -->
+		<section class="tracks page" id="tracksApp" style="display: none"></section>
+		<dialog class="tracks-info-dialog" style="display: none"></dialog>
+		<overlay-backdrop class="tracks-backdrop" style="display: none"></overlay-backdrop>
+		
+		<audio><source src="media/music/test.mp3" type="audio/mp3"></audio>
+		
+    <!-- About -->
+    <section class="about page" id="aboutApp" style="display: none"></section>
+		
+    <!-- Javascript Plugins -->
+    <script type="text/javascript" src="plugins/body-fade-in.js"></script>
+    
+    <!-- Local script -->
+		<script type="text/javascript" src="scripts/global.js"></script>
+		<script type="text/javascript" src="scripts/script.js"></script>
+		<script type="text/babel">
+			// React Components
+var WeatherApp = React.createClass({
+  render: function () {
+		
+		// Find Random Temp
+    var temp = randNum(10, 30);
+		
+    return (
+    	<div className="weather-inner">
+				<h1>Weather:</h1>
+				<p>
+					<span>{temp}</span>
+					<sup className="weather-type">{'°C'}</sup>
+				</p>
+			</div>  
+    )
+		
+  }
+});
+var GreetingApp = React.createClass({
+	render: function () {
+		
+		var d = new Date();
+		var year = d.getFullYear();
+		var month = d.getMonth() + 1;
+		var date = d.getDate();
+		var hour = d.getHours();
+		var greeting = '';
+		
+		if (hour < 12) { greeting = 'Good Morning'; }
+		else if (hour < 18) { greeting = 'Good Afternoon'; }
+		else if (hour < 20) { greeting = 'Good Evening';}
+		else if (hour <= 23) { greeting = 'Good Night'; }
+		else { console.log('Error: GreetingApp .getHours() not working.'); }
+		
+		return (
+			<div className="nav-greeting-inner">
+				<div className="nav-greeting-text">
+					<p>{greeting + ', ' + siteInfo.firstName}</p>
+				</div>
+				<div className="nav-date">
+					<p>{date + ' / ' + month + ' / ' + year}</p>
+				</div>
+			</div>
+		)	
+	}
+});
+var AlbumGrid = React.createClass({
+  render: function () {
+		
+		var sorttedAlbumObj = albumsObj,
+				gridIndex = 0;
+		
+		sorttedAlbumObj.sort(function(a, b) {
+			var nameA = a.title.toUpperCase(); // ignore upper and lowercase
+			var nameB = b.title.toUpperCase(); // ignore upper and lowercase
+			if (nameA < nameB) { return -1; }
+			if (nameA > nameB) { return 1; }
+			return 0; // name must be equal
+		});
+		
+    
+    var albumList = sorttedAlbumObj.map((album, index) => {
+			
+			// Variables
+			var artist;
+			
+			// Find  === Album Artist
+			for (var i = 0; i < artistsObj.length; i++) {
+				var item = artistsObj[i];
+				if (item.artistId === album.artistId) {
+					artist = item;
+					break;
+				}
+			}
+			
+			gridIndex++;
+			
+      return (
+        <div className="album" data-album={album.albumId} data-index={index}>
+          <div className="album-inner">
+            <div className="album-cover">
+              <div className="album-img">
+                <img src={album.cover} title={album.title}></img>
+								<div className="album-play" title={'Play ' + album.title}>
+									<i className="material-icons">play_arrow</i>
+								</div>
+              </div>
+            </div>
+            <div className="album-content">
+              <h1><span className="album-title" title={album.title} data-album={album.albumId}>{album.title}</span></h1>
+              <p><span className="album-artist" title={artist.name} data-artist={artist.artistId}>{artist.name}</span></p>
+            </div>
+          </div>
+        </div>
+      )
+			
+    });
+    
+    return (
+      <div className="grid" data-gridIndex={gridIndex}>{albumList}</div>
+    )
+  }
+});
+var AlbumSongsApp = React.createClass({
+  render: function () {
+    
+		// Album ID
+		var id = Number(this.props.id),
+				album;
+		
+		// Find Album
+		for (var i = 0; i < albumsObj.length; i++) {
+			var item = albumsObj[i];
+			if (item.albumId === id) {
+				album = item;
+				break;
+			}
+		}
+		
+		// Declare Album Info
+		var albumArtist,
+				albumArtistAlbums = [],
+				albumSongs = [],
+				albumLength = 0,
+				albumSeconds = 0;
+		
+		// Find Album Artist
+		for (var i = 0; i < artistsObj.length; i++) {
+			var item = artistsObj[i];
+			if (item.artistId === album.artistId) {
+				albumArtist = item;
+				break;
+			}
+		}
+		
+		// Find Artist Albums
+		for (var i = 0; i < albumsObj.length; i++) {
+			var item = albumsObj[i];
+			if (item.artistId === albumArtist.artistId) {
+				albumArtistAlbums.push(item);
+			}
+		}
+		
+		// Find Album Songs
+		for (var i = 0; i < songsObj.length; i++) {
+			var item = songsObj[i];
+			if (item.albumId === id) {
+				albumSongs.push(item);
+			}
+		}
+		
+		// Sort Album Songs in Track Num
+		albumSongs.sort(function (a, b) { return a.trackNum - b.trackNum ; });
+		
+		// Find total duration of album
+		for (var i = 0; i < albumSongs.length; i++) {
+			var songLength = albumSongs[i].length;
+			var minutes = Number(songLength.slice(0,2));
+			var seconds = Number(songLength.slice(3,7));
+			albumSeconds += (minutes * 60) + seconds;
+		}
+		
+		// Map Artist Album List
+		var albumList = albumArtistAlbums.map((album, index) => {
+			return (
+				<div className="artist-card-album" data-album={album.albumId} data-index={index}>
+					<div className="artist-card-album-inner">
+						<div className="artist-card-album-cover">
+							<img src={album.cover}></img>
+							<div className="artist-card-album-play"><i className="material-icons">play_arrow</i></div>
+						</div>
+						<div className="artist-card-album-content">
+							<h1 className="artist-card-album-title">
+								<span className="artist-card-album-title" data-album={album.albumId}>{album.title}</span>
+							</h1>
+							<p className="artist-card-album-artist">
+								<span className="artist-card-album-artist">{album.year}</span>
+							</p>
+						</div>
+					</div>
+				</div>
+			)
+		});
+		
+		// Map Album Songs
+		var songsList = albumSongs.map((song, index) => {
+      return (
+        <tr className="song" data-song={song.songId}>
+					<td className="song-play">
+						<i className="material-icons test-play">play_arrow</i>
+					</td>
+          <td className="song-num">
+						<span className="table-body-hover">{song.trackNum}</span>
+					</td>
+          <td className="song-title">
+						<span title={song.title} data-song={song.songId} className="table-body-hover">{song.title}</span>
+					</td>
+					<td className="song-artist">
+						<span title={albumArtist.name} data-artist={albumArtist.artistId} className="table-body-hover" className="table-body-hover">{albumArtist.name}</span>
+					</td>
+          <td className="song-length">
+						<span className="table-body-hover">{song.length}</span>
+					</td>
+        </tr>
+      )
+    });
+		
+		changePageTitle(album.title + ' - ' + albumArtist.name);
+    
+    return (
+      <div className="dialog-content">
+				<div className="songs-header container-flex-none">
+					<div className="flex-left">
+						<div className="song-album-info">
+							<div className="song-album-cover">
+								<a href={album.cover} target="_blank" title="View cover in new tab">
+									<img src={album.cover}/>
+									<div className="song-album-play"><i className="material-icons">play_arrow</i></div>
+								</a>
+							</div>
+							<div className="song-album-title">
+								<h1><span title={album.title}>{album.title}</span></h1>
+								<h2><span className="album-artist-info album-songs-artist" title={albumArtist.name}>{albumArtist.name}</span></h2>
+								<p>
+									<span>{albumSongs.length + ' tracks '}</span>
+									<span>&#8226;</span>
+									<span>{' ' + Math.round(albumSeconds / 60) + ' minutes '}</span>
+									<span>&#8226;</span>
+									<span>{' ' + album.year}</span>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div className="flex-right"><i className="material-icons song-close">close</i></div>
+				</div>
+        <div className="songs-table">
+					<table className="sortable" id="sortable-songs-table-album">
+						<thead>
+							<tr>
+								<th className="song-play" id="song-play-head">
+									<i className="material-icons">play_arrow</i>
+								</th>
+								<th className="song-num">
+									<span title="Sort by Track Number" className="table-head-hover">#</span>
+								</th>
+								<th className="song-title">
+									<span title="Sort by Title" className="table-head-hover">Title</span>
+								</th>
+								<th className="song-artist">
+									<span title="Sort by Artists" className="table-head-hover">Artist</span>
+								</th>
+								<th className="song-length">
+									<span title="Sort by Length" className="table-head-hover">Length</span>	
+								</th>
+							</tr>
+						</thead>
+						<tbody>{songsList}</tbody>
+					</table>
+				</div>
+				<div className="container">
+					<h1 className="card-titles">Albums by {albumArtist.name}</h1>
+					<div className="grid artist-card-albums">{albumList}</div>
+				</div>
+      </div>
+    )
+  }
+});
+var ArtistGrid = React.createClass({
+  render: function () {
+		
+		var sorttedArtistObj = artistsObj;
+		
+		sorttedArtistObj.sort(function(a, b) {
+			var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+			var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+			if (nameA < nameB) { return -1; }
+			if (nameA > nameB) { return 1; }
+			return 0; // name must be equal
+		});
+		
+		// Map Artist Grid
+    var artistList = artistsObj.map(function(artist, index) {
+			
+			var	groupPhoto = { backgroundImage: 'url(' + artist.groupPhoto + ')' };
+			
+      return (
+        <div className="artist" data-artist={artist.artistId} data-index={index}>
+          <div className="artist-inner">
+            <div className="artist-cover" style={groupPhoto}></div>
+            <div className="flex artist-info">
+              <div className="flex-left artist-logo">
+                <img className="artist-logo-inner" src={artist.logo}></img>
+              </div>
+              <div className="flex-right artist-data">
+                <h1><span className="link-bold artist-name" title={artist.name} data-artist={artist.artistId}>{artist.name}</span></h1>
+								<p><span>{artist.yearFormed}</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    });
+    
+    return (
+      <div className="grid">{artistList}</div>
+    )
+  }
+});
+var ArtistInfoApp = React.createClass({
+	render: function () {
+		
+		// Artist ID
+		var id = Number(this.props.id), artist;
+		
+		// Find Artist
+		for (var i = 0; i < artistsObj.length; i++) {
+			var item = artistsObj[i];
+			if (item.artistId === id) {
+				artist = item;
+				break;
+			}
+		}
+		
+		// Declare Artist Varibles
+		var artistMembers = [],
+				artistAlbums = [],
+				artistSongs = [],
+				artistSongsSeconds = 0,
+				membersGreet = ' members',
+				groupPhoto = { backgroundImage: 'url(' + artist.groupPhoto + ')' },
+				logo = { backgroundImage: 'url(' + artist.logo + ')' };
+		
+		// Find members
+		for (var i = 0; i < membersObj.length; i++) {
+			var item = membersObj[i];
+			if (item.artistId === artist.artistId) {
+				artistMembers.push(item);
+			}
+		}
+		
+		// Check length of Members
+		if (artistMembers.length <= 1) { membersGreet = ' member'; }
+		
+		// Map Member List
+		var membersList = artistMembers.map(function (member, index) {
+			
+			// Declare Background Image
+			var memberPhoto = { backgroundImage: 'url(' + member.photo + ')' };
+			
+			return (
+				<div className="artist-card-member" data-key={member.memberId}>
+					<div className="artist-card-member-inner">
+						<a href={member.photo} target="_blank">
+							<div className="artist-card-member-photo" style={memberPhoto}></div>
+						</a>
+						<div className="artist-card-member-content">
+							<h1 className="link-bold">{member.name}</h1>
+							<h2>{member.role}</h2>
+							<p>{'Joined in ' + member.yearJoined}</p>
+						</div>
+					</div>
+				</div>
+			)
+			
+		});
+		
+		// Find Artist Albums
+		for (var i = 0; i < albumsObj.length; i++) {
+			var item = albumsObj[i];
+			if (item.artistId === artist.artistId) {
+				artistAlbums.push(item);
+			}
+		}
+		
+		artistAlbums.sort(function(a, b) {
+			var nameA = a.title.toUpperCase(); // ignore upper and lowercase
+			var nameB = b.title.toUpperCase(); // ignore upper and lowercase
+			if (nameA < nameB) { return -1; }
+			if (nameA > nameB) { return 1; }
+			return 0; // name must be equal
+		});
+		
+		// Map Artist Album List
+		var albumList = artistAlbums.map((album, index) => {
+			return (
+				<div className="artist-card-album" data-album={album.albumId} data-index={index}>
+					<div className="artist-card-album-inner">
+						<div className="artist-card-album-cover">
+							<img src={album.cover}></img>
+							<div className="artist-card-album-play"><i className="material-icons">play_arrow</i></div>
+						</div>
+						<div className="artist-card-album-content">
+							<h1 className="artist-card-album-title">
+								<span className="artist-card-album-title" title={album.title} data-album={album.albumId}>{album.title}</span>
+							</h1>
+							<p className="artist-card-album-artist">
+								<span className="artist-card-album-artist" >{album.year}</span>
+							</p>
+						</div>
+					</div>
+				</div>
+			)
+		});
+		
+		// Find Artists Songs
+		for (var i = 0; i < songsObj.length; i++) {
+			var item = songsObj[i];
+			if (item.artistId === artist.artistId) {
+				artistSongs.push(item);
+			}
+		}
+		
+		artistSongs.sort(function(a, b) {
+			var nameA = a.title.toUpperCase(); // ignore upper and lowercase
+			var nameB = b.title.toUpperCase(); // ignore upper and lowercase
+			if (nameA < nameB) { return -1; }
+			if (nameA > nameB) { return 1; }
+			return 0; // name must be equal
+		});
+		
+		// Find total duration of all songs by artist
+		for (var i = 0; i < artistSongs.length; i++) {
+			var songLength = artistSongs[i].length;
+			var minutes = Number(songLength.slice(0,2));
+			var seconds = Number(songLength.slice(3,7));
+			artistSongsSeconds += (minutes * 60) + seconds;
+		}
+		
+		// Artist Songs Render
+    var songsList = artistSongs.map((song, index) => {
+			
+			// Declare Album Variables
+			var album;
+			
+			// Find Song Album Name
+			for (var i = 0; i < albumsObj.length; i++) {
+				var item = albumsObj[i];
+				if (item.albumId === song.albumId) {
+					album = item;
+					break;
+				}
+			}
+			
+      return (
+        <tr className="song" data-index={index} data-song={song.songId} >
+					<td className="song-play">
+						<i className="material-icons test-play">play_arrow</i>
+					</td>
+          <td className="song-num">
+						<span className="table-body-hover">{song.trackNum}</span>
+					</td>
+          <td className="song-title">
+						<span title={song.title} className="table-body-hover">{song.title}</span>
+					</td>
+					<td className="song-artist">
+						<span title={album.title} data-album={album.albumId} className="table-body-hover">{album.title}</span>
+					</td>
+          <td className="song-length song-length-artist">
+						<span>{song.length}</span>
+					</td>
+        </tr>
+      )
+    });
+		
+		changePageTitle(artist.name + ' - ' + artist.yearFormed);
+		
+		return (
+			<div className="dialog-content">
+				<div className="artist-card-cover artist-close" style={groupPhoto}></div>
+				<div className="artist-card-main container">
+					<div className="col-md-12">
+						<div className="artist-card-header">
+							<div className="artist-card-logo" style={logo}></div>
+							<div className="artist-card-title">
+								<h1 title={artist.name}>{artist.name}</h1>
+								<p>
+									<span>{artistMembers.length + membersGreet + ' '}</span>
+									<span>&#8226;</span>
+									<span>{' ' + artist.yearFormed}</span>
+								</p>
+							</div>
+						</div>
+						<div className="artist-card-content">
+							<h1 className="card-titles">Albums by {artist.name}</h1>
+							<div className="grid artist-card-albums">{albumList}</div>
+							<h1 className="card-titles">Songs by {artist.name}</h1>
+							<p className="card-para">{Math.round(artistSongsSeconds / 60) + ' minutes'}</p>
+							<div className="songs-table">
+								<table className="sortable" id="sortable-songs-table-artist">
+									<thead>
+										<tr>
+											<th className="song-play" id="song-play-head"><i className="material-icons">play_arrow</i></th>
+											<th className="song-num"><span title="Sort by Track Number" className="table-head-hover">#</span></th>
+											<th className="song-title"><span title="Sort by Title" className="table-head-hover">Title</span></th>
+											<th className="song-artist"><span title="Sort by Albums" className="table-head-hover">Album</span></th>
+											<th className="song-length song-length-artist"><span title="Sort by Length">Length</span></th>
+										</tr>
+									</thead>
+									<tbody>{songsList}</tbody>
+								</table>
+							</div>
+
+							<h1 className="card-titles">Members:</h1>
+							<div className="grid artist-card-members">{membersList}</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+		)
+		
+	}
+});
+var TracksList = React.createClass({
+	render: function () {
+		
+		// Find Length of all songs
+		var songs = songsObj,
+				numSongs = songs.length + 1,
+				numAlbums = albumsObj.length + 1,
+				numArtists = artistsObj.length + 1, // 1+ for zero index
+				songsSeconds = 0, songsMinutes;
+		
+		// All Tracks Total Seconds
+		for (var i = 0; i < songsObj.length; i++) {
+			var songLength = songsObj[i].length;
+			var minutes = Number(songLength.slice(0,2));
+			var seconds = Number(songLength.slice(3,7));
+			songsSeconds += (minutes * 60) + seconds;
+		}
+		
+		songs.sort(function(a, b) {
+			var nameA = a.title.toUpperCase(); // ignore upper and lowercase
+			var nameB = b.title.toUpperCase(); // ignore upper and lowercase
+			if (nameA < nameB) { return -1; }
+			if (nameA > nameB) { return 1; }
+			return 0; // name must be equal
+		});
+		
+		// All Tracks Total Minutes
+		songsMinutes = Math.round(songsSeconds / 60);
+		
+		var tracksList = songs.map(function (track, index) {
+			
+			var artist, album, length;
+			
+			// Check for 0 in Length
+			if (track.length.slice(0,1) == '0') {
+				length = track.length.slice(1,5);
+			} else {
+				length = track.length;
+			}
+			
+			// Find Song Artist
+			for (var i = 0; i < artistsObj.length; i++) {
+				var item = artistsObj[i];
+				if (item.artistId === track.artistId) {
+					artist = item;
+					break;
+				}
+			}
+			
+			// Find Song Album
+			for (var i = 0; i < albumsObj.length; i++) {
+				var item = albumsObj[i];
+				if (item.albumId === track.albumId) {
+					album = item;
+					break;
+				}
+			}
+			
+			return (
+				<tr className="track" data-song={track.songId} data-index={index}>
+					<td className="track-album-cover">
+						<img src={album.cover}></img>
+					</td>
+          <td className="track-num">
+						<span className="table-body-hover">{track.trackNum}</span>
+					</td>
+          <td className="track-title">
+						<span title={track.title} data-song={track.trackId} className="table-body-hover">{track.title}</span>
+					</td>
+          <td className="track-length">
+						<span>{length}</span>
+					</td>
+					<td className="track-play">
+						<i className="material-icons test-play">play_arrow</i>
+					</td>
+					<td className="track-artist">
+						<span title={artist.name} data-artist={artist.artistId} className="table-body-hover">{artist.name}</span>
+					</td>
+					<td className="track-album">
+						<span title={album.title} data-album={album.albumId} className="table-body-hover">{album.title}</span>
+					</td>
+        </tr>
+			)
+			
+		});
+		
+		return (
+			<div className="tracks-inner">
+				<div className="container-fluid flex tracks-header">
+					<div className="tracks-header-item tracks-button" id="tracks-shuffle">
+						<i className="material-icons">shuffle</i>
+						<span>Shuffle</span>
+					</div>
+					<div className="tracks-queue-container">
+						<div className="tracks-header-item tracks-queue" id="tracksQueueBtn">
+							<i className="material-icons">queue_music</i>
+							<span>Music Queue</span>
+						</div>
+						<div className="tracks-queue-dropdown" id="tracksQueueDropdown">
+							<div className="queue-songs" id="queue-song-inner"></div>
+						</div>
+					</div>
+				</div>
+				<div className="container-fluid tracks">
+					<table className="sortable" id="sortable-songs-table-album" id="sortable-songs-table-tracks">
+						<thead className="sortable">
+							<tr>
+								<th className="track-album-cover table-head-radius-l" id="track-album-head">
+									<i className="material-icons">album</i>
+								</th>
+								<th className="track-num" id="track-num-head">
+									<span title="Sort by Track Number" className="table-head-hover">#</span>
+								</th>
+								<th className="track-title">
+									<span title="Sort by Title" className="table-head-hover">Title</span>
+								</th>
+								<th className="track-length" id="track-length-head">
+									<span title="Sort by Length" className="table-head-hover">Length</span>	
+								</th>
+								<th className="track-play" id="track-play-head">
+									<i className="material-icons">play_arrow</i>
+								</th>
+								<th className="track-artist">
+									<span title="Sort by Artists" className="table-head-hover">Artist</span>
+								</th>
+								<th className="track-album table-head-radius-r">
+									<span title="Sort by Albums" className="table-head-hover">Album</span>
+								</th>
+							</tr>
+						</thead>
+						<tbody>{tracksList}</tbody>
+						<tfoot>
+							<tr>
+								<td colSpan="7">{numSongs} tracks. {songsMinutes} minuites.</td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</div>
+		)
+		
+	}
+});
+var TracksQueue = React.createClass({
+	render: function () {
+		
+		// Shuffle Songs Array
+		var shuffledArray = this.props.array;
+		
+		// Map Array
+		var shuffleList = shuffledArray.map(function (song, index) {
+			
+			// Declare Undefined Varibles
+			var	artist, album, length;
+			
+			// Find Song Artist
+			for (var i = 0; i < artistsObj.length; i++) {
+				var item = artistsObj[i];
+				if (item.artistId === song.artistId) {
+					artist = item;
+					break;
+				}
+			}
+			
+			// Find Song Album
+			for (var i = 0; i < albumsObj.length; i++) {
+				var item = albumsObj[i];
+				if (item.albumId === song.albumId) {
+					album = item;
+					break;
+				}
+			}
+			
+			// Check for 0 in Length
+			if (song.length.slice(0,1) == '0') { length = song.length.slice(1,5); }
+			else { length = song.length; }
+			
+			// Add 1 to Index for 0 Index
+			index++;
+			
+			// Return
+			return (
+				<li className="queue-song" data-song={song.songId} data-index={index}>
+					<div className="queue-song-index">
+						<div className="queue-song-index-number"><p>{index}</p></div>
+						<div className="queue-song-play"><i className="material-icons">play_circle_outline</i></div>
+					</div>
+					<a href={album.cover} target="_blank">
+						<img className="queue-song-album-cover" src={album.cover} title={album.title}></img>
+					</a>
+					<div className="flex queue-song-info">
+						<div className="flex-left">
+							<p className="queue-song-name">
+								<span data-song={song.songId} title={song.title}>{song.title}</span>
+							</p>
+							<p className="queue-song-artist-album">
+								<span className="queue-song-artist" data-artist={artist.artistId} title={artist.name}>{artist.name}</span>
+								<span className="no-underline"> &#8211; </span>
+								<span className="queue-song-album" data-album={album.albumId} title={album.title}>{album.title}</span>
+							</p>
+						</div>
+						<div className="flex-right queue-song-length">
+							<p>
+								<span className="no-underline">{length}</span>
+								<i className="material-icons">reorder</i>
+							</p>
+						</div>
+					</div>
+				</li>
+			)
+			
+		});
+		
+		return (
+			<div>
+				<h1>{'Music Queue' + ' - ' + shuffledArray.length + ' tracks.'}</h1>
+				<ul className="queue-songs-container">{shuffleList}</ul>
+			</div>
+		)
+		
+	}
+});
+var AboutPage = React.createClass({
+	
+  render: function () {
+		
+		// Find Length of all songs
+		var numSongs = songsObj.length + 1,
+				numAlbums = albumsObj.length + 1,
+				numArtists = artistsObj.length + 1, // 1+ for zero index
+				songsSeconds = 0,
+				songsMinutes;
+		
+		var reactUrl = 'https://facebook.github.io/react/',
+				listenUrl = 'https://play.google.com/music/listen';
+		
+		// All Tracks Total Seconds
+		for (var i = 0; i < songsObj.length; i++) {
+			var songLength = songsObj[i].length;
+			var minutes = Number(songLength.slice(0,2));
+			var seconds = Number(songLength.slice(3,7));
+			songsSeconds += (minutes * 60) + seconds;
+		}
+		
+		// All Tracks Total Minutes
+		songsMinutes = Math.round(songsSeconds / 60);
+		
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="col-md-8">
+            <div className="about-main">
+							
+              <div className="break-h"></div>
+              <p className="title center">Music Player</p>
+							<div className="break-h"></div>
+              <div className="text-break"></div>
+              <p className="para">
+								<span>A music player website built using Facebook's </span>
+								<a target="_blank" className="about-link" href={reactUrl}>React</a>
+								<span> Javascript library and framework.</span>
+							</p>
+							<p className="para">This is a clone website of Google Plays 'Listen' website.</p>
+							<p className="para"><a href={listenUrl} target="_blank" className="about-link">Google Play Music Player</a></p>
+							<div className="text-break"></div>
+							<p className="heading2">Music Library Stats</p>
+							<div className="break-h"></div>
+							<ul>
+								<li>
+									<b>{numSongs}</b>
+									<span> tracks</span>
+								</li>
+								<li>
+									<b>{numAlbums}</b>
+									<span> albums</span>
+								</li>
+								<li>
+									<b>{numArtists}</b>
+									<span> artists</span>
+								</li>
+								<li>
+									<b>{songsMinutes}</b>
+									<span> minutes</span>
+								</li>
+							</ul>
+							<div className="text-break"></div>
+							<p className="para">Created by {siteInfo.name} &#8211; Sydney, Australia</p>
+							
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="about-side">
+              
+							<img src="media/logo.png"></img>
+							<p className="subtitle">{siteInfo.siteName}</p>
+							<p className="para">Version: {siteInfo.version + ' - ' + siteInfo.versionName}</p>
+							
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+	
+	
+	
+});
+	
+$(function () {
+	
+	// Wait for JSON files
+	$.when( getAlbums(), getArtists(), getSongs(), getMembers() ).done(function () {
+
+		// Declare React Render Functions
+		renderGreetingApp = function () {
+			ReactDOM.render(
+				<GreetingApp />,
+				document.getElementById('greetingApp')
+			);
+		}
+		renderWeatherApp = function () {
+			ReactDOM.render(
+				<WeatherApp />,
+				document.getElementById('weatherApp')
+			);
+		}
+		renderAlbumGrid = function () {
+			ReactDOM.render(
+				<AlbumGrid />,
+				document.getElementById('albumsApp')
+			);
+		}
+		renderArtistGrid = function () {
+			ReactDOM.render(
+				<ArtistGrid />,
+				document.getElementById('artistsApp')
+			);
+		}
+		renderTracksList = function () {
+			ReactDOM.render(
+				<TracksList />,
+				document.getElementById('tracksApp')
+			)
+			// Make Songs Table Sortable
+			sorttable.makeSortable(document.getElementById('sortable-songs-table-tracks'));
+		}
+		renderAboutPage = function () {
+			ReactDOM.render(
+				<AboutPage />,
+				document.getElementById('aboutApp')
+			);
+		}
+		renderSongsApp = function (dataKey) {
+			ReactDOM.render(
+				<AlbumSongsApp id={dataKey} />,
+				document.getElementById('songDialogApp')
+			);
+		}
+		renderArtistInfo = function (dataKey) {
+			ReactDOM.render(
+				<ArtistInfoApp id={dataKey}/>,
+				document.getElementById('artistsInfoApp')
+			);
+		}
+		renderTracksQueue = function (dataKey) {
+			ReactDOM.render(
+				<TracksQueue array={dataKey}/>,
+				document.getElementById('queue-song-inner')
+			);
+		}
+
+		// Render React Component
+		renderGreetingApp();
+		renderWeatherApp();
+		renderAlbumGrid();
+		renderArtistGrid();
+		renderTracksList();
+		renderAboutPage();
+
+		// Card Click API's
+		albumClick = (function () {
+
+			// Cache DOM
+			var $el = $('.albums');
+			var $album = $el.find('.album');
+			var $albumClick = $album.find('.album-cover, .album-title');
+			var $dialog = $('.song-dialog');
+			var $backdrop = $('.songs-dialog-backdrop');
+			
+			$albumClick.on('click', function () {
+
+				// Variables
+				var album = $(this).closest('.album'),
+						dataKey = album.attr('data-album');
+
+				openAll();
+				renderSongsApp(dataKey);
+
+				// Song Close
+				$('.song-close').on('click', function () {
+					albumClick.closeAll();
+					changePageTitle('Albums');
+					$('#songDialogApp').html('');
+
+					// Scroll Top Dialog
+					$dialog.find('dialog-content').scrollTop(0, 0);
+				});
+
+				$('.song-dialog-content').scrollTop(0);
+
+				// Make Songs Table Sortable
+				sorttable.makeSortable(document.getElementById('sortable-songs-table-album'));
+
+			});
+
+			// Open/Close
+			function openAll() {
+				$backdrop.show();
+				$dialog.show();
+			}
+			function closeAll() {
+				$backdrop.hide();
+				$dialog.hide();
+			}
+
+			return {
+				openAll: openAll,
+				closeAll: closeAll
+			};
+
+		})();
+		artistClick = (function () {
+
+			// Cache DOM
+			var $el = $('.artists');
+
+			var $artist = $el.find('.artist');
+			var $artistClick = $artist.find('.artist-cover, .artist-logo-inner, .artist-name');
+
+			var $dialog = $('.artist-info-dialog');
+			var $backdrop = $('.artists-info-dialog-backdrop');
+
+			// Bind Events
+			$artistClick.on('click', function () {
+				var artist = $(this).closest('.artist');
+				var dataKey = artist.attr('data-artist');
+
+				openAll();
+				renderArtistInfo(dataKey);
+
+				var $dialogClose = $('.artist-close');
+				$dialogClose.on('click', function () {
+					artistClick.closeAll();
+					changePageTitle('Artists');
+					
+					$('#artistsInfoApp').html('');
+
+					// Scroll Top Dialog
+					$dialog.scrollTop(0, 0);
+				});
+
+				$('.artist-info-dialog').scrollTop(0);
+
+				// Make Songs Table Sortable
+				sorttable.makeSortable(document.getElementById('sortable-songs-table-artist'));
+
+			});
+
+			// Open/Close
+			function openAll() {
+				$dialog.show();
+				$backdrop.show();
+			}
+			function closeAll() {
+				$dialog.hide();
+				$backdrop.hide();
+			}
+
+			return {
+				openAll: openAll,
+				closeAll: closeAll
+			};
+
+		})();
+
+		// Music Play API
+		musicPlay = (function () {
+			
+			shuffleSongs();
+
+			// Cache Dom
+			var $audio = $('audio'),
+					$playTrigger = $('.test-play'),
+					$shuffleBtn = $('#tracks-shuffle'),
+					$queueBtn = $('#tracksQueueBtn'),
+					$queueDropdown = $('#tracksQueueDropdown');
+			
+			var $queueSongs = $queueDropdown.find('.queue-songs'),
+					$queueSong = $queueSongs.find('.queue-song');
+
+			// Variables
+			var playCounter = 0;
+
+			// Bind Events
+			$playTrigger.on('click', playSong.bind(this));
+			$queueBtn.on('click', queueToggle.bind(this));
+			$shuffleBtn.on('click', shuffleSongs.bind(this));
+			$queueSong.on({
+				'mouseenter': function () {
+					var $container = $(this).find('.queue-song-index');
+					var $index = $container.find('.queue-song-index-number');
+					var $play = $container.find('.queue-song-play');
+					$container.toggleClass('queue-song-index-hover');
+					$index.hide();
+					$play.show();
+				}, 'mouseleave':function () {
+					var $container = $(this).find('.queue-song-index');
+					var $index = $container.find('.queue-song-index-number');
+					var $play = $container.find('.queue-song-play');
+					$container.toggleClass('queue-song-index-hover');
+					$play.hide();
+					$index.show();
+				}
+			});
+
+			// Play Song
+			function playSong() {
+				playCounter++;
+				if (isEven(playCounter) === false) {
+					$audio.trigger('play');
+					$playTrigger.html('pause');
+				}
+				else if (isEven(playCounter) === true) {
+					$audio.trigger('pause');
+					$playTrigger.html('play_arrow');
+				}
+			}
+			
+			// Queue Toggle
+			function queueToggle() {
+				$queueDropdown.toggle();
+				$queueBtn.toggleClass('track-queue-click');
+			}
+			
+			// Shuffle Songs
+			function shuffleSongs() {
+				renderTracksQueue(shuffle(songsObj));
+			}
+
+			return {
+				playSong: playSong,
+				queueToggle: queueToggle,
+				shuffleSongs: shuffleSongs
+			}
+
+		})();
+		
+	});
+	
+});
+
+
+		</script>
+    
+	</body>
+</html>

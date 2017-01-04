@@ -1,0 +1,55 @@
+@import "../Sass/main.scss";
+
+.about {
+  .container {
+    margin-top: $padding-h + $padding-h-h;
+  }
+  .about-main {
+    padding: $padding;
+  }
+  .col-md-8, .col-md-4 {
+    padding-bottom: $padding-h + $padding-h-h;
+  }
+  .about-main {
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
+    color: $text;
+		.about-link {
+			color: $color-theme;
+			font-weight: 500;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+  }
+  .about-side {
+		padding: $padding-d;
+		img {
+			width: 100%;
+			height: auto;
+			margin-bottom: $padding-d;
+		}
+  }
+}
+.about-main {
+	ul {
+		li {
+			font-size: 14px;
+		}
+	}
+}
+
+// Responsive Media Rules
+@media (min-width: 768px) {
+  .about {
+    .container {
+      margin-top: $padding-d;
+    }
+  }
+	.about-side {
+		padding: $padding-h;
+		img {
+			width: 70%;
+			margin-bottom: $padding + $padding-h;
+		}
+	}
+}

@@ -1,0 +1,322 @@
+@import "../Sass/about.scss";
+
+.artists {
+  .artist {
+    $artist-width: calc(100% / 1);
+    width: $artist-width;
+    min-width: $artist-width;
+    padding: $padding-h-h;
+    height: auto;
+    .artist-inner {
+      @include card-shadow;
+      height: 480px;
+      .artist-cover {
+        width: 100%;
+        height: 369px;
+        background-position: 50% 50%;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      .artist-info {
+        padding: $padding-h;
+				background-color: #fff;
+				cursor: auto;
+        .artist-data {
+          float: left;
+          width: 88%;
+					padding: 12px;
+					padding-top: 8px;
+          h1, p {
+            @include card-text;
+            width: 100%;
+          }
+					h1 {
+						span {
+							font-size: 28px;
+						}
+					}
+          p {
+						span {
+            	font-size: 20px;
+							color: $color-grey-600;
+						}
+          }
+        }
+        .artist-logo {
+          margin-right: $padding-h;
+          img {
+						@include card-shadow;
+            width: 85px;
+            border-radius: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+@media (min-width: 1000px) {
+  .artists {
+    .artist {
+      $artist-width: calc(100% / 2);
+      width: $artist-width;
+      min-width: $artist-width;
+    }
+  }
+}
+@media (min-width: 1600px) {
+  .artists {
+    .artist {
+      $artist-width: calc(100% / 3);
+      width: $artist-width;
+      min-width: $artist-width;
+    }
+  }
+}
+
+.artist-info-dialog {
+	@include transition;
+	.dialog-content {
+		padding: 0;
+		.artist-card-cover {
+			width: 100%;
+			height: 66%;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: top;
+			cursor: pointer;
+		}
+	}
+}
+.artist-card-main {
+	padding: 0;
+	.col-md-12 {
+		padding: 0;
+	}
+	.artist-card-header {
+		.artist-card-logo {
+			transition: .2s box-shadow;
+			position: relative;
+			cursor: pointer;
+			top: -100px;
+			width: 250px;
+			height: 250px;
+			margin-left: 31px;
+			background-size: cover;
+			background-color: #fff;
+			background-repeat: no-repeat;
+			background-position: center;
+			border-radius: 100%;
+			box-shadow: 0 10px 10px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+			&:hover {
+				box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+			}
+		}
+		.artist-card-title {
+			position: absolute;
+			top: 0px;
+			left: 282px;
+			padding: $padding;
+			padding-left: $padding-d;
+			h1 {
+				padding-top: 8px;
+				font-size: 7vmin;
+				padding-bottom: $padding-h;
+				border-bottom: 2px solid $color-grey-400;
+				margin-bottom: $padding-h;
+			}
+			p {
+				span {
+					font-size: 3vmin;
+					font-weight: 500;
+					color: $color-grey-500;
+				}
+			}
+		}
+	}
+	.artist-card-content {
+		padding: $padding;
+		margin-bottom: $padding-d;
+		.artist-card-members {
+			padding: 0;
+			.artist-card-member {
+				$member-width: calc(100% / 1);
+				width: $member-width;
+				min-width: $member-width;
+				padding: $padding-h;
+				height: auto;
+				.artist-card-member-inner {
+					@include shadow;
+					transition-duration: .1s;
+					background-color: #fff;
+					border-radius: 10px;
+					padding: $padding-h;
+					height: 100%;
+					.artist-card-member-photo {
+						@include shadow-no-hover; 
+						width: 200px;
+						height: 200px;
+						background-color: #fff;
+						background-size: cover;
+						background-position: center;
+						background-repeat: no-repeat;
+						border-radius: 100%;
+						margin: $center;
+						margin-top: $padding-h;
+						margin-bottom: $padding;
+					}
+					.artist-card-member-content {
+						padding: $padding-h;
+						padding-top: 0;
+						h1, h2, p {
+							@include clear;
+							text-align: center;
+							margin-bottom: 4px;
+						}
+						h1 {
+							font-size: 20px;
+						}
+						h2, p {
+							font-size: 15px;
+							font-weight: 500;
+						}
+						h2 {
+							color: $color-grey-800;
+						}
+						p {
+							color: $color-grey-600;
+							margin: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.artist-card-albums {
+	.artist-card-album {
+		$artist-card-width: calc(100% / 1);
+		width: $artist-card-width;
+		min-width: $artist-card-width;
+		padding: $padding-h;
+		.artist-card-album-inner {
+			@include shadow;
+			border-radius: 0;
+			.artist-card-album-cover {
+				@include clear;
+				position: relative;
+				cursor: pointer;
+				-webkit-user-select: none;
+				&:hover {
+					.artist-card-album-play { display: block; }
+				}
+				img {
+					height: 100%;
+					width: 100%;
+				}
+				.artist-card-album-play { @include img-play }
+			}
+			.artist-card-album-content {
+				padding: 10px;
+				background-color: #fff;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				border-radius: 0 0 5px 5px;
+				cursor: pointer;
+				h1, p {
+					@include card-text;
+					span {
+						cursor: pointer;
+						&:hover { text-decoration: underline; }
+					}
+				}
+				h1 { font-size: 18px; font-weight: 600; }
+				p { font-size: 17px; font-weight: 400; }
+			}
+		}
+	}
+}
+
+
+.card-titles {
+	font-size: 30px;
+	text-align: center;
+	padding: $padding-d;
+	border-bottom: 1px solid $color-theme-400;
+	margin-bottom: $padding;
+}
+.card-para {
+	font-size: 22px;
+	text-align: center;
+	padding: $padding-h;
+}
+
+// Artist Albums Responsive Rules
+@media (min-width: 450px) {
+	.artist-card-albums {
+		.artist-card-album {
+			$artist-card-width: calc(100% / 2);
+			width: $artist-card-width;
+			min-width: $artist-card-width;
+		}
+	}
+}
+@media (min-width: 650px) {
+	.artist-card-albums {
+		.artist-card-album {
+			$artist-card-width: calc(100% / 3);
+			width: $artist-card-width;
+			min-width: $artist-card-width;
+		}
+	}
+}
+@media (min-width: 850px) {
+	.artist-card-albums {
+		.artist-card-album {
+			$artist-card-width: calc(100% / 4);
+			width: $artist-card-width;
+			min-width: $artist-card-width;
+		}
+	}
+}
+
+// Member Responsive Rules
+@media (min-width: 900px) {
+	.artist-card-main {
+		.artist-card-content {
+			.artist-card-members {
+				.artist-card-member {
+					$member-width: calc(100% / 2);
+					width: $member-width;
+					min-width: $member-width;
+				}
+			}
+		}
+	}
+}
+@media (min-width: 1100px) {
+	.artist-card-main {
+		.artist-card-content {
+			.artist-card-members {
+				.artist-card-member {
+					$member-width: calc(100% / 3);
+					width: $member-width;
+					min-width: $member-width;
+				}
+			}
+		}
+	}
+}
+@media (min-width: 1390px) {
+	.artist-card-main {
+		.artist-card-content {
+			.artist-card-members {
+				.artist-card-member {
+					$member-width: calc(100% / 4);
+					width: $member-width;
+					min-width: $member-width;
+				}
+			}
+		}
+	}
+}

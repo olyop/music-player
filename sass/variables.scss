@@ -1,0 +1,57 @@
+@import "../Sass/color-variables.scss"; 
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,900');
+
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+
+// Main font
+$font: 'Roboto', sans-serif;
+$font-fancy: 'Lobster', cursive;
+
+// Main highlight color
+$color-theme: $color-deep-orange-500;
+
+$color-theme-50: $color-deep-orange-50;
+$color-theme-100: $color-deep-orange-100;
+$color-theme-200: $color-deep-orange-200;
+$color-theme-300: $color-deep-orange-300;
+$color-theme-400: $color-deep-orange-400;
+$color-theme-500: $color-deep-orange-500;
+$color-theme-600: $color-deep-orange-600;
+$color-theme-700: $color-deep-orange-700;
+$color-theme-800: $color-deep-orange-800;
+$color-theme-900: $color-deep-orange-900;
+
+$color-border: #e7dfdd;
+$color-heading: $color-theme;
+
+$text: #212121;
+$text-head: #fff;
+$text-background: #fafafa;
+
+$padding: 20px;
+$padding-h: 10px;
+$padding-h-h: 5px;
+$padding-d: 40px;
+$padding-d-d: 80px;
+$padding-d-d-d: 100px;
+$transition: .3s all;
+
+$center: 0 auto;
+$width: 1000px;
+$text-width: 700px;
+$border: 1px solid #000;
+$text-border: 1px solid $color-border;
+
+$nav-height: 76px;
+
+// Grid Margins
+$top-left: 20px 10px 10px 20px;
+$top-middle: 20px 10px 10px 10px;
+$top-right: 20px 20px 10px 10px;
+$middle-left: 10px 10px 10px 20px;
+$middle: 10px 10px 10px 10px;
+$middle-right: 10px 20px 10px 10px;
+$bottom-left: 10px 10px 20px 20px;
+$bottom-middle: 10px 10px 20px 10px; 
+$bottom-right: 10px 20px 20px 10px;

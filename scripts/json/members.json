@@ -1,0 +1,476 @@
+{
+	"members": [
+		{
+			"memberId": 1,
+			"name": "Julian Casablancas",
+      "artistId": 1,
+			"role": "Lead Vocals",
+			"yearJoined": "1998",
+			"photo": "media/artists/the-strokes/julian-casablancas.jpg"
+		},
+		{
+			"memberId": 2,
+			"name": "Nick Valensi",
+      "artistId": 1,
+			"role": "Lead Guitar, Backing Vocals",
+			"yearJoined": "1998",
+			"photo": "media/artists/the-strokes/nick-valensi.jpg"
+		},
+		{
+			"memberId": 3,
+			"name": "Albert Hammond, Jr.",
+      "artistId": 1,
+			"role": "Rhythm Guitar, Backing Vocals",
+			"yearJoined": "1998",
+			"photo": "media/artists/the-strokes/albert-hammond-jr.jpg"
+		},
+		{
+			"memberId": 4,
+			"name": "Nikolai Fraiture",
+      "artistId": 1,
+			"role": "Bass Guitar",
+			"yearJoined": "1998",
+			"photo": "media/artists/the-strokes/nikolai-fraiture.jpg"
+		},
+		{
+			"memberId": 5,
+			"name": "Fabrizio Moretti",
+      "artistId": 1,
+			"role": "Drums",
+			"yearJoined": "1988",
+			"photo": "media/artists/the-strokes/fabrizio-moretti.jpg"
+		},
+		{
+			"memberId": 6,
+			"name": "Kevin Parker",
+      "artistId": 2,
+			"role": "Lead Vocals, Guitar",
+			"yearJoined": "2007",
+			"photo": "media/artists/tame-impala/kevin-parker.jpg"
+		},
+		{
+			"memberId": 7,
+			"name": "Jay Watson",
+      "artistId": 2,
+			"role": "Synthesizers, Backing Vocals",
+			"yearJoined": "2007",
+			"photo": "media/artists/tame-impala/jay-watson.jpg"
+		},
+		{
+			"memberId": 8,
+			"name": "Dominic Snimper",
+      "artistId": 2,
+			"role": "Guitar, Synth",
+			"yearJoined": "2007",
+			"photo": "media/artists/tame-impala/dominic-snimper.jpg"
+		},
+		{
+			"memberId": 9,
+			"name": "Cam Avery",
+      "artistId": 2,
+			"role": "Bass, Backing Vocals",
+			"yearJoined": "2007",
+			"photo": "media/artists/tame-impala/cam-avery.jpg"
+		},
+		{
+			"memberId": 10,
+			"name": "Matt Bellamy",
+      "artistId": 3,
+			"role": "Lead Vocals, Guitar",
+			"yearJoined": "1994",
+			"photo": "media/artists/muse/matt-bellamy.jpg"
+		},
+		{
+			"memberId": 11,
+			"name": "Chris Wolstenholme",
+      "artistId": 3,
+			"role": "Bass Guitar, Backing Vocals",
+			"yearJoined": "1994",
+			"photo": "media/artists/muse/chris-wolstenholme.jpg"
+		},
+		{
+			"memberId": 12,
+			"name": "Dominic Howard",
+      "artistId": 3,
+			"role": "Drums",
+			"yearJoined": "1994",
+			"photo": "media/artists/muse/dominic-howard.jpg"
+		},
+		{
+			"memberId": 13,
+			"name": "Dylan Frost",
+      "artistId": 4,
+			"role": "Lead Vocals, Rhythm Guitar",
+			"yearJoined": "2008",
+			"photo": "media/artists/sticky-fingers/dylan-frost.jpg"
+		},
+		{
+			"memberId": 14,
+			"name": "Paddy Cornwall",
+      "artistId": 4,
+			"role": "Bass Guitar, Backing Vocals",
+			"yearJoined": "2008",
+			"photo": "media/artists/sticky-fingers/paddy-cornwall.jpg"
+		},
+		{
+			"memberId": 15,
+			"name": "Seamus Coyle",
+      "artistId": 4,
+			"role": "Lead Guitar",
+			"yearJoined": "2008",
+			"photo": "media/artists/sticky-fingers/seamus-coyle.jpg"
+		},
+		{
+			"memberId": 16,
+			"name": "Beaker Best",
+      "artistId": 4,
+			"role": "Drums",
+			"yearJoined": "2008",
+			"photo": "media/artists/sticky-fingers/beaker-best.jpg"
+		},
+		{
+			"memberId": 17,
+			"name": "Freddy Crabs",
+      "artistId": 4,
+			"role": "Keyboard, Synthesizers",
+			"yearJoined": "2008",
+			"photo": "media/artists/sticky-fingers/freddy-crabs.jpg"
+		},
+		{
+			"memberId": 18,
+			"name": "Thomas Bangalter",
+      "artistId": 5,
+			"role": "Synthesizer",
+			"yearJoined": "1993",
+			"photo": "media/artists/daft-punk/thomas-bangalter.jpeg"
+		},
+		{
+			"memberId": 19,
+			"name": "Guy-Manual de Homen Christo",
+      "artistId": 5,
+			"role": "Synthesizers",
+			"yearJoined": "1993",
+			"photo": "media/artists/daft-punk/guy-manual-de-homen-christo.jpg"
+		},
+		{
+			"memberId": 20,
+			"name": "Billie Joe Armstrong",
+      "artistId": 6,
+			"role": "Lead Vocals, Lead Guitar",
+			"yearJoined": "1986",
+			"photo": "media/artists/green-day/bille-joe-armstrong.jpg"
+		},
+		{
+			"memberId": 21,
+			"name": "Mike Dirnt",
+      "artistId": 6,
+			"role": "Bass, Backing Vocals",
+			"yearJoined": "1986",
+			"photo": "media/artists/green-day/mike-dirnt.jpg"
+		},
+		{
+			"memberId": 22,
+			"name": "Tré Cool",
+      "artistId": 6,
+			"role": "Drums, Backing Vocals",
+			"yearJoined": "1990",
+			"photo": "media/artists/green-day/tré-cool.jpg"
+		},
+		{
+			"memberId": 23,
+			"name": "Dave Grohl",
+      "artistId": 7,
+			"role": "Lead Vocals, Rhythm and Lead Guitar",
+			"yearJoined": "1994",
+			"photo": "media/artists/foo-fighters/dave-grohl.jpg"
+		},
+		{
+			"memberId": 24,
+			"name": "Nate Mendel",
+      "artistId": 7,
+			"role": "Bass",
+			"yearJoined": "1995",
+			"photo": "media/artists/foo-fighters/nate-mendel.jpg"
+		},
+		{
+			"memberId": 25,
+			"name": "Pat Smear",
+      "artistId": 7,
+			"role": "Rhythm Guitar, Backing Vocals, Lead Guitar",
+			"yearJoined": "1995",
+			"photo": "media/artists/foo-fighters/pat-smear.jpg"
+		},
+		{
+			"memberId": 26,
+			"name": "Taylor Hawkins",
+      "artistId": 7,
+			"role": "Drums, Backing Vocals",
+			"yearJoined": "1997",
+			"photo": "media/artists/foo-fighters/taylor-hawkins.jpg"
+		},
+		{
+			"memberId": 27,
+			"name": "Chris Shiflett",
+      "artistId": 7,
+			"role": "Lead Guitar, Backing Vocals",
+			"yearJoined": "1999",
+			"photo": "media/artists/foo-fighters/chris-shiflett.jpg"
+		},
+		{
+			"memberId": 28,
+			"name": "Andrew VanWyngarden",
+      "artistId": 8,
+			"role": "Lead Vocals, Guitar, Keyboards",
+			"yearJoined": "2004",
+			"photo": "media/artists/mgmt/andrew-vanwyngarden.jpg"
+		},
+		{
+			"memberId": 29,
+			"name": "Benjamin Goldwasser",
+      "artistId": 8,
+			"role": "Vocals, Keyboards, Drums",
+			"yearJoined": "2004",
+			"photo": "media/artists/mgmt/benjamin-goldwasser.jpg"
+		},
+		{
+			"memberId": 30,
+			"name": "Gerard Way",
+      "artistId": 9,
+			"role": "Lead Vocals",
+			"yearJoined": "2001",
+			"photo": "media/artists/my-chemical-romance/gerard-way.jpg"
+		},
+		{
+			"memberId": 31,
+			"name": "Ray Toro",
+      "artistId": 9,
+			"role": "Lead Guitar, Backing Vocals",
+			"yearJoined": "2001",
+			"photo": "media/artists/my-chemical-romance/ray-toro.jpg"
+		},
+		{
+			"memberId": 32,
+			"name": "Mikey Way",
+      "artistId": 9,
+			"role": "Bass Guitar",
+			"yearJoined": "2001",
+			"photo": "media/artists/my-chemical-romance/mikey-way.jpg"
+		},
+		{
+			"memberId": 33,
+			"name": "Frank Lero",
+      "artistId": 9,
+			"role": "Rhythm Guitar, Backing Vocals",
+			"yearJoined": "2002",
+			"photo": "media/artists/my-chemical-romance/frank-lero.jpg"
+		},
+		{
+			"memberId": 34,
+			"name": "James Dewees",
+      "artistId": 9,
+			"role": "Drums, Backing Vocals",
+			"yearJoined": "2007",
+			"photo": "media/artists/my-chemical-romance/james-dewees.jpg"
+		},
+		{
+			"memberId": 35,
+			"name": "Ryan Merchant",
+      "artistId": 10,
+			"role": "Keyboard",
+			"yearJoined": "2010",
+			"photo": "media/artists/capital-cities/ryan-merchant.jpg"
+		},
+		{
+			"memberId": 36,
+			"name": "Sebu Simonian",
+      "artistId": 10,
+			"role": "Keyboard, Guitar",
+			"yearJoined": "2004",
+			"photo": "media/artists/capital-cities/sebu-simonian.jpg"
+		},
+		{
+			"memberId": 37,
+			"name": "Anthony Kiedis",
+      "artistId": 11,
+			"role": "Lead Vocals",
+			"yearJoined": "1986",
+			"photo": "media/artists/red-hot-chilli-peppers/anthony-kiedis.jpg"
+		},
+		{
+			"memberId": 38,
+			"name": "Flea",
+      "artistId": 11,
+			"role": "Bass Guitar, Backing Vocals",
+			"yearJoined": "1983",
+			"photo": "media/artists/red-hot-chilli-peppers/flea.png"
+		},
+		{
+			"memberId": 39,
+			"name": "Chad Smith",
+      "artistId": 11,
+			"role": "Drums",
+			"yearJoined": "1988",
+			"photo": "media/artists/red-hot-chilli-peppers/chad-smith.jpg"
+		},
+		{
+			"memberId": 40,
+			"name": "Josh Klinghoffer",
+      "artistId": 11,
+			"role": "Guitar, Keyboards, Backing Vocals",
+			"yearJoined": "2009",
+			"photo": "media/artists/red-hot-chilli-peppers/josh-klinghoffer.jpg"
+		},
+		{
+			"memberId": 41,
+			"name": "Axel Rose",
+      "artistId": 12,
+			"role": "Lead Vocals, Piano",
+			"yearJoined": "1983",
+			"photo": "media/artists/guns-n-roses/axel-rose.jpg"
+		},
+		{
+			"memberId": 42,
+			"name": "Slash",
+      "artistId": 12,
+			"role": "Lead Guitar, Backing Vocals",
+			"yearJoined": "1983",
+			"photo": "media/artists/guns-n-roses/slash.jpg"
+		},
+		{
+			"memberId": 43,
+			"name": "Duff McKagan",
+      "artistId": 12,
+			"role": "Bass Guitar, Backing Vocals",
+			"yearJoined": "1985",
+			"photo": "media/artists/guns-n-roses/duff-mckagan.jpg"
+		},
+		{
+			"memberId": 44,
+			"name": "Dizzy Reed",
+      "artistId": 12,
+			"role": "Keyboards, Piano",
+			"yearJoined": "1990",
+			"photo": "media/artists/guns-n-roses/dizzy-reed.jpg"
+		},
+		{
+			"memberId": 45,
+			"name": "Michael Jackson",
+      "artistId": 13,
+			"role": "Vocals",
+			"yearJoined": "1971",
+			"photo": "media/artists/michael-jackson/michael-jackson.jpg"
+		},
+		{
+			"memberId": 46,
+			"name": "Chris Martin",
+      "artistId": 14,
+			"role": "Lead Vocals, Rhythm Guitar, Piano, Keyboard",
+			"yearJoined": "1996",
+			"photo": "media/artists/coldplay/chris-martin.jpg"
+		},
+		{
+			"memberId": 47,
+			"name": "Jonny Buckland",
+      "artistId": 14,
+			"role": "Lead Guitar, Backing Vocals, Piano",
+			"yearJoined": "1996",
+			"photo": "media/artists/coldplay/jonny-buckland.jpg"
+		},
+		{
+			"memberId": 48,
+			"name": "Guy Berryman",
+      "artistId": 14,
+			"role": "Bass Guitar, Backing Vocals",
+			"yearJoined": "1996",
+			"photo": "media/artists/coldplay/guy-berryman.jpg"
+		},
+		{
+			"memberId": 49,
+			"name": "Will Champion",
+      "artistId": 14,
+			"role": "Drums, Backing Vocals, Keybaord",
+			"yearJoined": "1996",
+			"photo": "media/artists/coldplay/will-champion.jpg"
+		},
+		{
+			"memberId": 50,
+			"name": "Roger Waters",
+			"artistId": 15,
+			"role": "Vocals, Rhythm Guitar",
+			"yearJoined": "1965",
+			"photo": "media/artists/pink-floyd/roger-waters.jpg"
+		},
+		{
+			"memberId": 51,
+			"name": "David Gilmour",
+			"artistId": 15,
+			"role": "Vocals, Lead Guitar",
+			"yearJoined": "1967",
+			"photo": "media/artists/pink-floyd/david-gilmour.jpg"
+		},
+		{
+			"memberId": 52,
+			"name": "Nick Mason",
+			"artistId": 15,
+			"role": "Drums",
+			"yearJoined": "1965",
+			"photo": "media/artists/pink-floyd/nick-mason.jpg"
+		},
+		{
+			"memberId": 53,
+			"name": "Richard Wright",
+			"artistId": 15,
+			"role": "Vocals, Keybaords",
+			"yearJoined": "1965",
+			"photo": "media/artists/pink-floyd/.jpg"
+		},
+		{
+			"memberId": 54,
+			"name": "Syd Barret",
+			"artistId": 15,
+			"role": "Vocals, Leads and Rhythm Guitar",
+			"yearJoined": "1965",
+			"photo": "media/artists/pink-floyd/.jpg"
+		},
+		{
+			"memberId": 55,
+			"name": "Brain Johnson",
+			"artistId": 16,
+			"role": "Lead Vocals",
+			"yearJoined": "1973",
+			"photo": "media/artists/ac-dc/brian-johnson.jpg"
+		},
+		{
+			"memberId": 56,
+			"name": "Angus Young",
+			"artistId": 16,
+			"role": "Lead Guitar",
+			"yearJoined": "1973",
+			"photo": "media/artists/ac-dc/angus-young.jpg"
+		},
+		{
+			"memberId": 57,
+			"name": "Phil Rudd",
+			"artistId": 16,
+			"role": "Drums",
+			"yearJoined": "1975",
+			"photo": "media/artists/ac-dc/phil-rudd.jpg"
+		},
+		{
+			"memberId": 58,
+			"name": "Stevie Young",
+			"artistId": 16,
+			"role": "Rhythm Guitar, Backing Vocals",
+			"yearJoined": "1973",
+			"photo": "media/artists/ac-dc/stevie-johnson.jpg"
+		},
+		{
+			"memberId": 59,
+			"name": "Cliff Williams",
+			"artistId": 16,
+			"role": "Bass Guitar, Backing Vocals",
+			"yearJoined": "1973",
+			"photo": "media/artists/ac-dc/cliff-williams.jpg"
+		}
+	]
+}

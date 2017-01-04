@@ -1,0 +1,25 @@
+{
+  "name": "template",
+  "authors": [
+    "Oliver K. Plummer <oly.rbsc@gmail.com>"
+  ],
+  "description": "template",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "bootstrap": "^3.3.7",
+    "mustache.js": "mustache#^2.2.1",
+    "react": "^15.3.2",
+    "babel": "^5.8.38",
+    "normalize-css": "^5.0.0",
+    "underscore": "^1.8.3",
+    "jquery-ui": "^1.12.1"
+  }
+}

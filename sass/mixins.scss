@@ -1,0 +1,141 @@
+@import "../Sass/variables.scss";
+
+@mixin clear {
+	padding: 0;
+	margin: 0;
+}
+@mixin transition {
+	-webkit-transition: $transition;
+	transition: $transition all;
+	-webkit-transition-timing-function: ease-in-out;
+	transition-timing-function: ease-in-out;
+}
+@mixin text {
+	font-family: $font;
+	color: $text;
+	letter-spacing: 0.1px;
+	margin: 0;
+  text-overflow: clip;
+}
+@mixin para {
+	@include text;
+	font-size: 13px;
+	font-weight: 400;
+	line-height: 24px;
+}
+@mixin para2 {
+	@include text;
+	font-size: 15px;
+	font-weight: 500;
+	line-height: 24px;
+}
+@mixin subtitle {
+	@include text;
+	font-size: 18px;
+	font-weight: 800;
+	line-height: 24px;
+}
+@mixin title {
+	@include text;
+	font-size: 40px;
+	font-weight: 400;
+	letter-spacing: 0px;
+	line-height: 40px;
+}
+@mixin heading1 {
+	@include text;
+	font-size: 32px;
+	font-weight: 400;
+	letter-spacing: 0px;
+	line-height: 32px;
+	color: $color-heading;
+}
+@mixin heading2 {
+	@include text;
+	font-size: 22px;
+	font-weight: 400;
+	letter-spacing: 0px;
+	line-height: 32px;
+	color: $color-heading;
+}
+@mixin heading3 {
+	@include text;
+	font-size: 20px;
+	font-weight: 300;
+	letter-spacing: 0px;
+	line-height: 32px;
+	color: $color-heading;
+}
+@mixin card-text {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  background-color: #fff;
+  &:after {
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    width: 30px;
+    content: "";
+    background: linear-gradient(to right,rgba(255,255,255,0),rgba(255,255,255,1));
+  }
+}
+@mixin scrollbar {
+	overflow-y: scroll;
+	overflow-x: hidden;
+	&::-webkit-scrollbar {
+		width: 12px;
+	}
+	&::-webkit-scrollbar-track {
+		background-color: $color-grey-400;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: $color-grey-600;
+
+	}
+}
+@mixin shadow {
+	@include transition;
+	transition-duration: .2s;
+	border-radius: 5px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	&:hover {
+		box-shadow: 0 7px 15px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+	}
+}
+@mixin shadow-no-hover {
+  border-radius: 5px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+@mixin card-shadow {
+  @include transition;
+  transition-duration: .2s;
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
+  cursor: pointer;
+  &:hover {
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.60);
+  }
+}
+@mixin img-play {
+	@include transition;
+	&:hover {
+		background-color: rgba(64,64,64,1);
+		border-radius: 100%;
+	}
+	display: none;
+	position: absolute;
+	height: 40px;
+	width: 40px;
+	right: $padding-h;
+	bottom: $padding-h;
+	background-color: rgba(26,26,26,0.8);
+	border-radius: 100%;
+	padding: 5px;
+	i {
+		font-size: 30px;
+		color: $text-head;
+	}
+}

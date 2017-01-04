@@ -1,0 +1,171 @@
+@import "../Sass/artists.scss";
+
+.songs-dialog-backdrop {
+	width: 100%;
+	height: 100%;
+	z-index: 250;
+}
+
+.menu-backdrop {
+	margin-top: $nav-height;
+	width: 100%;
+	height: 92%;
+	z-index: 200;
+}
+
+.song-dialog {
+	.dialog-content {
+		.songs-header {
+			.song-album-info {
+				.song-album-cover {
+					position: relative;
+					display: inline-block;
+					margin-right: $padding;
+					margin-bottom: $padding;
+					&:hover {
+						.song-album-play { display: block; }
+					}
+					img {
+						@include card-shadow;
+						width: 173px;
+						height: auto;
+						border-radius: 10px;
+						cursor: pointer;
+					}
+					.song-album-play { @include img-play; }
+				}
+				.song-album-title {
+					display: inline-block;
+					vertical-align: top;
+					padding: $padding;
+					margin-bottom: $padding;
+					border-radius: 10px;
+					h1 {
+						span {
+							cursor: pointer;
+							font-size: 40px;
+							font-weight: 400;
+							color: $color-theme-500;
+						}
+						padding-bottom: $padding-h;
+						border-bottom: 1px solid $color-grey-500;
+						margin-bottom: $padding-h;
+					}
+					h2 {
+						font-size: 30px;
+						font-weight: 300;
+						margin-bottom: $padding-h;
+						.album-artist-info {
+							cursor: pointer;
+							font-weight: 400;
+							&:hover { text-decoration: underline; }
+						}
+					}
+					p {
+						span {
+							font-size: 18px;
+							font-weight: 500;
+							color: $color-grey-600;
+						}
+					}
+				}
+			}
+			.song-close {
+				@include card-shadow;
+				transition-duration: .2;
+				border-radius: 20px;
+				font-size: 60px;
+				right: 93px;
+				position: fixed;
+				background-color: #fff;
+				color: $color-grey-500;
+				&:hover {
+					color: $color-grey-800;
+				}
+			}
+		}
+	}
+}
+
+.songs-table {
+	table {
+		border-collapse: collapse;
+		width: 100%;
+		th,
+		td {
+			padding: 8px;
+			padding-bottom: 6px;
+			text-align: left;
+		}
+		thead {
+			margin-bottom: $padding-h;
+			tr {
+				th {
+					-webkit-user-select: none;
+					cursor: pointer;
+					font-size: 18px;
+					font-weight: 500;
+					&:hover {
+						background-color: $color-grey-400;
+					}
+					span:first-child {
+						@include text;
+					}
+					.table-head-hover {
+						@include text;
+						&:hover { text-decoration: underline; }
+					}
+				}
+			}
+		}
+		tr {
+			$table-border: 1px solid $color-grey-400;
+			border-top: $table-border;
+			border-bottom: $table-border;
+			&:hover {
+				background-color: $color-grey-200;
+				.song-play { color: $text; }
+			}
+		}
+		td {
+			cursor: pointer;
+			span {
+				cursor: pointer;
+				font-size: 18px;
+				white-space: nowrap;
+				overflow: hidden;
+			}
+			.table-body-hover {
+				&:hover { text-decoration: underline; }
+			}
+		}
+		.song-num,
+		.song-title,
+		.song-artist,
+		.song-length { padding-left: 10px; }
+		.song-play {
+			width: 2%;
+			padding: 4px;
+			padding-bottom: 0;
+			color: #fff;
+			.material-icons {
+				font-size: 32px;
+				&:hover { color: $color-theme; }
+			}
+		}
+		.song-num {
+			width: 4%;
+			text-align: center;
+		}
+		.song-title { width: 56%; }
+		.song-artist { width: 20%; }
+		.song-length {
+			width: 20%;
+			text-align: left;
+		}
+		.song-length-artist {
+			text-align: right;
+		}
+		#song-play-head { color: $text; }
+	}
+}

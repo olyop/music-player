@@ -1,0 +1,230 @@
+@import "../Sass/mixins.scss";
+
+html {
+	box-sizing: border-box;
+}
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+body {
+	display: none;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	width: 100%;
+	height: 100%;
+}
+.clear {
+	padding: 0;
+}
+.container-n {
+	padding: $padding $padding $padding $padding;
+}
+.container-h {
+	padding: $padding-h $padding $padding-h $padding;
+}
+.container-side {
+	padding: 0px $padding 0px $padding;
+}
+.container-top {
+	padding: $padding 0px $padding 0px;
+}
+.container-top-h {
+	padding: $padding-h 0px $padding-h 0px;
+}
+.container-none {
+	padding: 0 0 0 0;
+}
+.container-text {
+	padding: $padding $padding $padding $padding;
+}
+.container-text-h {
+	padding: $padding-h $padding-h $padding-h $padding-h;
+}
+.container-text-flex {
+	padding: $padding $padding $padding $padding;
+	display: flex;
+}
+.container-text-flex-h {
+	padding: $padding-h $padding-h $padding-h $padding-h;
+	display: flex;
+}
+.container-flex {
+	padding: $padding $padding $padding $padding;
+	display: flex;
+}
+.container-flex-h {
+	padding: $padding-h $padding $padding-h $padding;
+	display: flex;
+}
+.container-flex-top {
+	padding: $padding 0px $padding 0px;
+	display: flex;
+}
+.container-flex-top-h {
+	padding: $padding-h 0px $padding-h 0px;
+	display: flex;
+}
+.container-flex-none {
+	padding: 0 0 0 0;
+	display: flex;
+}
+.flex-left {
+	margin-right: auto;
+}
+.flex-right {
+	
+}
+.container-img {
+	padding: $padding $padding 17px $padding;
+}
+.container-img-h {
+	padding: $padding-h $padding 7px $padding;
+}
+.container-flex-img-h {
+	display: flex;
+	padding: $padding-h $padding 7px $padding;
+}
+.container-relative {
+	padding: $padding $padding $padding $padding;
+	position: relative;
+}
+.container-relative-h {
+	padding: $padding-h $padding $padding-h $padding;
+	position: relative;
+}
+.container-relative-none {
+	padding: 0px 0px 0px 0px;
+	position: relative;
+}
+.container-relative-text {
+	padding: $padding $padding $padding $padding;
+	position: relative;
+}
+.container-relative-text-h {
+	padding: $padding-h $padding-h $padding-h $padding-h;
+	position: relative;
+}
+.relative {
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	position: absolute;
+}
+.relative-top {
+	top: 0;
+	position: absolute;
+}
+.relative-right {
+	right: 0;
+	position: absolute;
+}
+.relative-bottom {
+	bottom: 0;
+	position: absolute;
+}
+.relative-left {
+	left: 0;
+	position: absolute;
+}
+.content {
+	margin: $center;
+	width: $width;
+}
+.content-text {
+	margin: $center;
+	width: $text-width;
+}
+.content-text-left {
+	width: $text-width;
+}
+.text-break {
+	margin-top: $padding;
+	border-top: $text-border;
+	margin-bottom: $padding;
+}
+.break {
+	padding-top: $padding-h;
+	padding-bottom: $padding-h;
+}
+.break-h {
+	padding-top: $padding-h-h;
+	padding-bottom: $padding-h-h;
+}
+.break-d {
+	padding-top: $padding;
+	padding-bottom: $padding;
+}
+::selection {
+	color: $text-head;
+	background: $color-theme;
+}
+h1, h2, h3, h4, h5, h6, p, span, a, b {
+	@include text;
+	text-decoration: none;
+}
+a:hover {
+  color: $text;
+}
+i, img {
+	-webkit-user-select: none;
+}
+.text-center {
+	text-align: center;
+}
+.text-white {
+	@include text;
+	color: $text-head;
+}
+.white {
+	color: $text-head;
+}
+.box-shadow {
+	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+}
+.text {
+	@include text;
+}
+.para {
+	@include para;
+}
+.para2 {
+	@include para2;
+}
+.subtitle {
+	@include subtitle;
+}
+.title {
+	@include title;
+}
+.heading1 {
+	@include heading1;
+}
+.heading2 {
+	@include heading2;
+}
+.heading3 {
+	@include heading3;
+}
+.hamburger {
+  padding-bottom: 11px;
+  outline: none;
+}
+.red {
+  background-color: red;
+}
+.blue {
+  background-color: blue;
+}
+.opacity {
+  @include transition;
+  transition-duration: .2s;
+  opacity: 0.2;
+}
+.no-select {
+  -webkit-user-select: none;
+  &:hover {
+    text-decoration: none !important;
+  }
+}

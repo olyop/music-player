@@ -1,0 +1,235 @@
+{
+  "albums": [
+    {
+      "albumId": 1,
+      "title": "Thriller",
+      "artistId": 13,
+      "cover": "media/album-covers/thriller.png",
+      "year": "1982"
+    },
+    {
+      "albumId": 2,
+      "title": "Discovery",
+      "artistId": 5,
+      "cover": "media/album-covers/discovery.jpg",
+      "year": "2005"
+    },
+    {
+      "albumId": 3,
+      "title": "International Superhits!",
+      "artistId": 6,
+      "cover": "media/album-covers/international-superhits.png",
+      "year": "2001"
+    },
+    {
+      "albumId": 4,
+      "title": "Is This It",
+      "artistId": 1,
+      "cover": "media/album-covers/is-this-it.png",
+      "year": "2001"
+    },
+    {
+      "albumId": 5,
+      "title": "Viva La Vida or Death and All His Friends",
+      "artistId": 14,
+      "cover": "media/album-covers/viva-la-vida-or-death-and-all-his-friends.jpg",
+      "year": "2008"
+    },
+    {
+      "albumId": 6,
+      "title": "Land Of Pleasure",
+      "artistId": 4,
+      "cover": "media/album-covers/land-of-pleasure.jpg",
+      "year": "2014"
+    },
+    {
+      "albumId": 7,
+      "title": "Westway (The Glitter & The Slums)",
+      "artistId": 4,
+      "cover": "media/album-covers/westway.png",
+      "year": "2016"
+    },
+    {
+      "albumId": 8,
+      "title": "Angles",
+      "artistId": 1,
+      "cover": "media/album-covers/angles.png",
+      "year": "2011"
+    },
+    {
+      "albumId": 9,
+      "title": "Caress Your Soul",
+      "artistId": 4,
+      "cover": "media/album-covers/caress-your-soul.png",
+      "year": "2013"
+    },
+    {
+      "albumId": 10,
+      "title": "First Impressions Of Earth",
+      "artistId": 1,
+      "cover": "media/album-covers/first-impressions-of-earth.png",
+      "year": "2006"
+    },
+    {
+      "albumId": 11,
+      "title": "Currents",
+      "artistId": 2,
+      "cover": "media/album-covers/currents.png",
+      "year": "2015"
+    },
+    {
+      "albumId": 12,
+      "title": "Room On Fire",
+      "artistId": 1,
+      "cover": "media/album-covers/room-on-fire.png",
+      "year": "2003"
+    },
+    {
+      "albumId": 13,
+      "title": "The 2nd law",
+      "artistId": 3,
+      "cover": "media/album-covers/the-2nd-law.png",
+      "year": "2012"
+    },
+    {
+      "albumId": 14,
+      "title": "Origin Of Symmetry",
+      "artistId": 3,
+      "cover": "media/album-covers/origin-of-symmetry.jpg",
+      "year": "2001"
+    },
+    {
+      "albumId": 15,
+      "title": "Drones",
+      "artistId": 3,
+      "cover": "media/album-covers/drones.png",
+      "year": "2015"
+    },
+    {
+      "albumId": 16,
+      "title": "The Getaway",
+      "artistId": 11,
+      "cover": "media/album-covers/the-getaway.png",
+      "year": "2016"
+    },
+    {
+      "albumId": 17,
+      "title": "Safe And Sound",
+      "artistId": 10,
+      "cover": "media/album-covers/safe-and-sound.jpg",
+      "year": "2011"
+    },
+    {
+      "albumId": 18,
+      "title": "Get Lucky",
+      "artistId": 5,
+      "cover": "media/album-covers/get-lucky.jpg",
+      "year": "2013"
+    },
+    {
+      "albumId": 19,
+      "title": "American Idiot",
+      "artistId": 6,
+      "cover": "media/album-covers/american-idiot.jpg",
+      "year": "2004"
+    },
+    {
+      "albumId": 20,
+      "title": "Appetite For Destruction",
+      "artistId": 12,
+      "cover": "media/album-covers/appetite-for-destruction.jpg",
+      "year": "1987"
+    },
+    {
+      "albumId": 21,
+      "title": "Oracular Spectacular",
+      "artistId": 8,
+      "cover": "media/album-covers/oracular-spectacular.jpg",
+      "year": "2007"
+    },
+    {
+      "albumId": 23,
+      "title": "The Black Parade",
+      "artistId": 9,
+      "cover": "media/album-covers/the-black-parade.jpg",
+      "year": "2006"
+    },
+    {
+      "albumId": 25,
+      "title": "Future Present Past",
+      "artistId": 1,
+      "cover": "media/album-covers/future-present-past.jpg",
+      "year": "2016"
+    },
+    {
+      "albumId": 26,
+      "title": "Californication",
+      "artistId": 11,
+      "cover": "media/album-covers/californication.jpg",
+      "year": "1999"
+    },
+    {
+      "albumId": 27,
+      "title": "Echoes, Silence, Patience & Grace",
+      "artistId": 7,
+      "cover": "media/album-covers/echoes-silence-patience-and-grace.jpg",
+      "year": "2007"
+    },
+		{
+      "albumId": 28,
+      "title": "The Resistance",
+      "artistId": 3,
+      "cover": "media/album-covers/the-resistance.jpg",
+      "year": "2009"
+    },
+		{
+			"albumId": 29,
+			"title": "Black Holes and Revelations",
+			"artistId": 3,
+			"cover": "media/album-covers/black-holes-and-revelations.jpg",
+			"year": "2006"
+		},
+		{
+			"albumId": 30,
+			"title": "Lonerism",
+			"artistId": 2,
+			"cover": "media/album-covers/lonerism.jpeg",
+			"year": "2012"
+		},
+		{
+			"albumId": 31,
+			"title": "The Wall",
+			"artistId": 15,
+			"cover": "media/album-covers/the-wall.jpg",
+			"year": "1979"
+		},
+		{
+			"albumId": 32,
+			"title": "The Dark Side of the Moon",
+			"artistId": 15,
+			"cover": "media/album-covers/the-dark-side-of-the-moon.jpg",
+			"year": "1973"
+		},
+		{
+			"albumId": 33,
+			"title": "A Rush Of Blood To The Head",
+			"artistId": 14,
+			"cover": "media/album-covers/a-rush-of-blood-to-the-head.jpg",
+			"year": "2002"
+		},
+		{
+			"albumId": 34,
+			"title": "Black Ice",
+			"artistId": 16,
+			"cover": "media/album-covers/black-ice.jpg",
+			"year": "2008"
+		},
+		{
+			"albumId": 35,
+			"title": "Back in Black",
+			"artistId": 16,
+			"cover": "media/album-covers/back-in-black.jpg",
+			"year": "1980"
+		}
+  ]
+}
